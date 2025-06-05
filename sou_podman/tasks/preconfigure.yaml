@@ -1,0 +1,21 @@
+---
+
+- name: Ensure template destination folder exists
+  ansible.builtin.file:
+    path: '{{ configuration_files_folder }}'
+    state: directory
+
+- name: Ensure certificates destination folder exists
+  ansible.builtin.file:
+    path: '{{ certificates_files_folder }}'
+    state: directory
+
+- name: Template container configuration files
+  ansible.builtin.template:
+    src: '{{ item }}'
+    dest: '{{ configuration_files_folder }}/{{ item }}'
+  with_items:
+    - '{{ grafana_configuration_file }}'
+    - '{{ haproxy_configuration_file }}'
+    - '{{ prometheus_configuration_file  }}'
+

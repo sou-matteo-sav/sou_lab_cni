@@ -1,0 +1,21 @@
+---
+
+- name: Clean folders
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: absent
+  with_items:
+    - '{{ configuration_files_folder }}'
+    - '{{ certificates_files_folder }}'
+
+- name: Remove running containers
+  containers.podman.podman_container:
+    name: '{{ item }}'
+    state: absent
+  with_items:
+    - '{{ haproxy_container.name }}'
+    - '{{ grafana_container.name }}'
+    - '{{ prometheus_container.name }}'
+
+- name: Stop role execution
+  ansible.builtin.meta: end_play

@@ -1,7 +1,21 @@
 ---
 
-- name: Preconfigure nodes
-  ansible.builtin.import_tasks: preconfigure_machines.yaml
+# Run role with clean=true if you want to cleanup all the environment
+- name: Cleanup
+  ansible.builtin.import_tasks: clean.yaml
+  when: clean
+
+- name: Preconfigure machines
+  ansible.builtin.import_tasks: preconfigure.yaml
+
+- name: Generate certificates for HAProxy
+  ansible.builtin.import_tasks: certificates.yaml
+
+- name: Deploy Prometheus
+  ansible.builtin.import_tasks: deploy_prometheus.yaml
+
+- name: Deploy Grafana
+  ansible.builtin.import_tasks: deploy_grafana.yaml
 
 - name: Deploy HAProxy
   ansible.builtin.import_tasks: deploy_haproxy.yaml

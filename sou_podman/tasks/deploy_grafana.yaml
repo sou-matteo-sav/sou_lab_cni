@@ -1,0 +1,11 @@
+---
+
+- name: Deploy grafana container
+  containers.podman.podman_container:
+    name: '{{ grafana_container.name }}'
+    image: '{{ grafana_container.image }}:{{ grafana_container.image_tag }}'
+    state: '{{ grafana_container.state }}'
+    expose: '{{ grafana_container.exposed_port }}'
+    ports: '{{ grafana_container.mapped_ports }}'
+    volume:
+      - '{{ playbook_dir }}/{{ grafana_container.volume }}'

@@ -1,0 +1,11 @@
+---
+
+- name: Deploy prometheus container
+  containers.podman.podman_container:
+    name: '{{ prometheus_container.name }}'
+    image: '{{ prometheus_container.image }}:{{ prometheus_container.image_tag }}'
+    state: '{{ prometheus_container.state }}'
+    expose: '{{ prometheus_container.exposed_port }}'
+    ports: '{{ prometheus_container.mapped_ports }}'
+    volume:
+      - '{{ playbook_dir }}/{{ prometheus_container.volume }}'

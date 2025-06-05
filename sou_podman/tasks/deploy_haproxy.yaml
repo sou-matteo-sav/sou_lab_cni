@@ -1,5 +1,12 @@
 ---
 
-- name: Testing playbook execution
-  ansible.builtin.debug:
-    msg: "This is a test!"
+- name: Deploy haproxy container
+  containers.podman.podman_container:
+    name: '{{ haproxy_container.name }}'
+    image: '{{ haproxy_container.image }}:{{ haproxy_container.image_tag }}'
+    state: '{{ haproxy_container.state }}'
+    expose: '{{ haproxy_container.exposed_port }}'
+    ports: '{{ haproxy_container.mapped_ports }}'
+    volume:
+      - '{{ playbook_dir }}/{{ haproxy_container.volume }}'
+      - '{{ playbook_dir }}/{{ haproxy_container.certificate }}'
