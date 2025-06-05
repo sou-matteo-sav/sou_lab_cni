@@ -1,0 +1,5 @@
+---
+
+- name: Testing playbook execution
+  ansible.builtin.debug:
+    msg: "This is a test!"
