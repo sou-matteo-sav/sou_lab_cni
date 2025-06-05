@@ -3,5 +3,5 @@
 - name: Preconfigure nodes
   ansible.builtin.import_tasks: preconfigure_machines.yaml
 
-- name: Deploy Containers
+- name: Deploy HAProxy
   ansible.builtin.import_tasks: deploy_haproxy.yaml
