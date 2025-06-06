@@ -22,8 +22,6 @@
     return_content: true
   register: certificate
 
-
-# I have to rewrite this one, it stinks. i might use copy module with |content
 - name: Creating PEM from key and cert
   ansible.builtin.copy:
     content: |
