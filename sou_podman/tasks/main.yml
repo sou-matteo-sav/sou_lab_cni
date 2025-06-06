@@ -1,5 +1,4 @@
 ---
-
 # Run role with clean=true if you want to cleanup all the environment
 - name: Cleanup
   ansible.builtin.import_tasks: clean.yaml

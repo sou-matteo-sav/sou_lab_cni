@@ -2,6 +2,9 @@
   community.crypto.openssl_privatekey:
     path: '{{ certificates_files_folder }}/{{ ssl_certificates.key.name }}'
     size: '{{ ssl_certificates.key.size }}'
+    return_content: true
+  no_log: true
+  register: privatekey
 
 - name: Creating CSR
   community.crypto.openssl_csr_pipe:
@@ -16,7 +19,15 @@
     privatekey_path: '{{ certificates_files_folder }}/{{ ssl_certificates.key.name }}'
     csr_content: "{{ csr.csr }}"
     provider: selfsigned
+    return_content: true
+  register: certificate
+
 
 # I have to rewrite this one, it stinks. i might use copy module with |content
-- name: Doing horrible stuff to create a pem
-  ansible.builtin.shell: 'cat {{ certificates_files_folder }}/{{ ssl_certificates.cert.name }} {{ certificates_files_folder }}/{{ ssl_certificates.key.name }} | tee {{ certificates_files_folder }}/certificate.pem'
+- name: Creating PEM from key and cert
+  ansible.builtin.copy:
+    content: |
+      {{ privatekey.privatekey }}
+      {{ certificate.certificate }}
+    dest: '{{ certificates_files_folder }}/{{ ssl_certificates.cert.name }}'
+    mode: '0755'
