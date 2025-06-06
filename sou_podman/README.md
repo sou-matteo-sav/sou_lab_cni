@@ -63,10 +63,6 @@ For prometheus to work, this extra arg must be added in container execution
 --web.external-url=/prometheus/
 ```
 
-## ToDo
-
-- Add check if podman is not installed
-
 ## Author
 
 Matteo S.
