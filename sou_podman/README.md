@@ -36,7 +36,7 @@ Playbook has also a clean step that can be executed to clean the folder. It has 
 ansible-playbook --vault-password-file vault_pass playbook.yaml -v --extra-vars "clean=true"
 ```
 
-## Variable
+## Variables
 Role is completely variable based, so every part can be configured in the vars file.
 
 ## Vault
