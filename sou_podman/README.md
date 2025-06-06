@@ -8,12 +8,15 @@ This role depends on the following collections (they are already available in an
 - community.crypto
 
 Also, this role has been written on a macbook twith apple M2 chip, so it needs podman already installed and the podman machine running.
+
 The role can detect if the podman machine is not running, and will tell you to start it.
 
 ## Info
 
-This role will deploy 3 podman containers. haproxy, grafana and prometheus.
+Role will deploy 3 podman containers. haproxy, grafana and prometheus.
+
 HAProxy will be exposed on port 8443, and will be used as a path-based reverse proxy.
+
 Aftern playbook execution, grafana and prometheus can be reached calling HAProxy:
 - https://localhost:8443/grafana
 - https://localhost:8443/prometheus
@@ -22,15 +25,15 @@ Role will also take care of haproxy ssl certs generation.
 
 ## Usage
 
+Normal execution can be achieved with the command
+```bash
+ansible-playbook --vault-password-file vault_pass playbook.yaml -v
+```
+
 Playbook has also a clean step that can be executed to clean the folder. It has to be invoked with an extra var that defaults to true.
 
 ```bash
 ansible-playbook --vault-password-file vault_pass playbook.yaml -v --extra-vars "clean=true"
-```
-
-Normal execution can be achieved with the command
-```bash
-ansible-playbook --vault-password-file vault_pass playbook.yaml -v
 ```
 
 ## Variable
