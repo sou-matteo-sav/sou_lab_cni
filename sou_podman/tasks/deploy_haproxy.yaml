@@ -7,6 +7,7 @@
     state: '{{ haproxy_container.state }}'
     expose: '{{ haproxy_container.exposed_port }}'
     ports: '{{ haproxy_container.mapped_ports }}'
+    network: '{{ podman_network_name }}'
     volume:
       - '{{ playbook_dir }}/{{ haproxy_container.volume }}'
       - '{{ playbook_dir }}/{{ haproxy_container.certificate }}'

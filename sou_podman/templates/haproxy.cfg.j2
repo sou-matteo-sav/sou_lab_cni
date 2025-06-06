@@ -1,7 +1,7 @@
 global
   maxconn 20000
   ulimit-n 16384
-  log 127.0.0.1 local0
+  log 127.0.0.1 local0 debug
   daemon
 
 frontend fe_https
@@ -13,19 +13,18 @@ frontend fe_https
   option nolinger
   maxconn 8000
   timeout client 30s
-  acl is_grafana hdr(host) -i foobar.local
-  use_backend grafana if is_grafana
-  acl is_prometheus hdr(host) -i foo.local
-  use_backend prometheus if is_prometheus
+
+  use_backend prometheus if { path /prometheus } or { path_beg /prometheus/ }
+  use_backend grafana if { path /grafana } or { path_beg /grafana/ }
 
 backend grafana
   mode http
   balance roundrobin
   option httpchk
-  server grafana1 192.168.50.111:3000 check
-  backend prometheus
+  server grafana1 {{ grafana_container.name }}:3000 check
 
-mode http
+backend prometheus
+  mode http
   balance roundrobin
   option httpchk
-  server prometheus1 192.168.50.111:9090 check
+  server prometheus1 {{ prometheus_container.name }}:9090 check

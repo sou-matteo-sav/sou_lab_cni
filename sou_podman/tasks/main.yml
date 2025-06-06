@@ -2,7 +2,7 @@
 # Run role with clean=true if you want to cleanup all the environment
 - name: Cleanup
   ansible.builtin.import_tasks: clean.yaml
-  when: clean
+  #when: clean
 
 - name: Check if podman machine is running
   ansible.builtin.import_tasks: podman_status.yaml
@@ -12,6 +12,9 @@
 
 - name: Generate certificates for HAProxy
   ansible.builtin.import_tasks: certificates.yaml
+
+- name: Podman network
+  ansible.builtin.import_tasks: podman_network.yaml
 
 - name: Deploy Prometheus
   ansible.builtin.import_tasks: deploy_prometheus.yaml

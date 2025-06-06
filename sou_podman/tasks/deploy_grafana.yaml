@@ -7,6 +7,7 @@
     state: '{{ grafana_container.state }}'
     expose: '{{ grafana_container.exposed_port }}'
     ports: '{{ grafana_container.mapped_ports }}'
+    network: '{{ podman_network_name }}'
     volume:
       - '{{ playbook_dir }}/{{ grafana_container.volume }}'
   register: grafana_container_return

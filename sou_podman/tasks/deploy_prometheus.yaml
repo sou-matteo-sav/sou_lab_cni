@@ -7,6 +7,9 @@
     state: '{{ prometheus_container.state }}'
     expose: '{{ prometheus_container.exposed_port }}'
     ports: '{{ prometheus_container.mapped_ports }}'
+    network: '{{ podman_network_name }}'
+    command:
+      - '{{ prometheus_container.extra_command_1 }}'
     volume:
       - '{{ playbook_dir }}/{{ prometheus_container.volume }}'
   register: prometheus_container_return

@@ -27,5 +27,5 @@
     content: |
       {{ privatekey.privatekey }}
       {{ certificate.certificate }}
-    dest: '{{ certificates_files_folder }}/{{ ssl_certificates.cert.name }}'
+    dest: '{{ certificates_files_folder }}/{{ ssl_certificates.pem.name }}'
     mode: '0755'

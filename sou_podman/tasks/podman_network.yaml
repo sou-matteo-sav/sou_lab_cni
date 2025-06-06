@@ -1,0 +1,4 @@
+---
+- name: Podman network definition
+  containers.podman.podman_network:
+    name: '{{ podman_network_name }}'

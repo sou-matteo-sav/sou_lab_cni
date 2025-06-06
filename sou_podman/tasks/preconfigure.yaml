@@ -14,7 +14,7 @@
 
 - name: Template container configuration files
   ansible.builtin.template:
-    src: '{{ item }}'
+    src: '{{ item }}.j2'
     dest: '{{ configuration_files_folder }}/{{ item }}'
     mode: '0755'
   with_items:
