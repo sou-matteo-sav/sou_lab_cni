@@ -4,6 +4,9 @@
   ansible.builtin.import_tasks: clean.yaml
   when: clean
 
+- name: Check if podman machine is running
+  ansible.builtin.import_tasks: podman_status.yaml
+
 - name: Preconfigure machines
   ansible.builtin.import_tasks: preconfigure.yaml
 
@@ -18,3 +21,6 @@
 
 - name: Deploy HAProxy
   ansible.builtin.import_tasks: deploy_haproxy.yaml
+
+- name: Status Report
+  ansible.builtin.import_tasks: container_status_return.yaml

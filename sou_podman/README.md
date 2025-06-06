@@ -1,4 +1,7 @@
-# Role Name
+# sou_lab_cni
 =========
 
-This role will be used to install podman
+## Info
+
+This role will deploy 3 podman containers. haproxy, grafana and prometheus.
+It will take care of haproxy ssl certs generation.

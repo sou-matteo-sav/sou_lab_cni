@@ -9,3 +9,4 @@
     ports: '{{ grafana_container.mapped_ports }}'
     volume:
       - '{{ playbook_dir }}/{{ grafana_container.volume }}'
+  register: grafana_container_return

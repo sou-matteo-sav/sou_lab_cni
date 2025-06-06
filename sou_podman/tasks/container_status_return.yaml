@@ -1,0 +1,17 @@
+---
+
+- name: Container report
+  ansible.builtin.debug:
+    msg:
+      - "## GRAFANA CONTAINER ##"
+      - "Grafana Container Running: {{ grafana_container_return.container.State.Status }}"
+      - "Exposed Ports: {{ grafana_container_return.container.Config.ExposedPorts }}"
+      - "Grafana Container Entrypoint: {{ grafana_container_return.container.Args }}"
+      - "## PROMETHEUS CONTAINER ##"
+      - "Prometheus Container Running: {{ prometheus_container_return.container.State.Status }}"
+      - "Exposed Ports: {{ prometheus_container_return.container.Config.ExposedPorts }}"
+      - "Prometheus Container Entrypoint: {{ prometheus_container_return.container.Args }}"
+      - "## HAPROXY CONTAINER ##"
+      - "Haproxy Container Running: {{ haproxy_container_return.container.State.Status }}"
+      - "Exposed Ports: {{ haproxy_container_return.container.Config.ExposedPorts }}"
+      - "Haproxy Container Entrypoint: {{ haproxy_container_return.container.Args }}"

@@ -9,3 +9,4 @@
     ports: '{{ prometheus_container.mapped_ports }}'
     volume:
       - '{{ playbook_dir }}/{{ prometheus_container.volume }}'
+  register: prometheus_container_return

@@ -10,3 +10,4 @@
     volume:
       - '{{ playbook_dir }}/{{ haproxy_container.volume }}'
       - '{{ playbook_dir }}/{{ haproxy_container.certificate }}'
+  register: haproxy_container_return
