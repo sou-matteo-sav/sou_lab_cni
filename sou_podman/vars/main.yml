@@ -31,7 +31,9 @@ prometheus_container:
   state: "started"
   exposed_port: "9090"
   mapped_ports: "9090:9090"
-  extra_command_1: "--web.external-url=/prometheus/"
+  extra_command_1: "--config.file=/etc/prometheus/prometheus.yml"
+  extra_command_2: "--storage.tsdb.path=/prometheus"
+  extra_command_3: "--web.external-url=/prometheus/"
   volume: '{{ configuration_files_folder }}/{{ prometheus_configuration_file }}:/etc/prometheus/prometheus.yml:z'
 
 # GRAFANA

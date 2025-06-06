@@ -17,5 +17,5 @@
     - '{{ grafana_container.name }}'
     - '{{ prometheus_container.name }}'
 
-#- name: Stop role execution
-#  ansible.builtin.meta: end_play
+- name: Stop role execution
+  ansible.builtin.meta: end_play

@@ -2,7 +2,7 @@
 # Run role with clean=true if you want to cleanup all the environment
 - name: Cleanup
   ansible.builtin.import_tasks: clean.yaml
-  #when: clean
+  when: clean
 
 - name: Check if podman machine is running
   ansible.builtin.import_tasks: podman_status.yaml

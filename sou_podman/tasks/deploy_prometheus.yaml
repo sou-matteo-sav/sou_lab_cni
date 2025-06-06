@@ -10,6 +10,8 @@
     network: '{{ podman_network_name }}'
     command:
       - '{{ prometheus_container.extra_command_1 }}'
+      - '{{ prometheus_container.extra_command_2 }}'
+      - '{{ prometheus_container.extra_command_3 }}'
     volume:
       - '{{ playbook_dir }}/{{ prometheus_container.volume }}'
   register: prometheus_container_return
