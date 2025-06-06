@@ -17,7 +17,7 @@ Role will deploy 3 podman containers. haproxy, grafana and prometheus.
 
 HAProxy will be exposed on port 8443, and will be used as a path-based reverse proxy.
 
-Aftern playbook execution, grafana and prometheus can be reached calling HAProxy:
+After playbook execution, grafana and prometheus can be reached calling HAProxy:
 - https://localhost:8443/grafana
 - https://localhost:8443/prometheus
 
