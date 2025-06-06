@@ -1,6 +1,6 @@
 ---
 
-- name: Install Podman
+- name: Modulo Formativo 1
   hosts: localhost
   connection: local
   roles:
