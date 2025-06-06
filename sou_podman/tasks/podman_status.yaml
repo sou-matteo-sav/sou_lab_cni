@@ -7,5 +7,5 @@
 
 - name: Fail if podman machine is not started
   ansible.builtin.fail:
-    msg: "Ops... podman machine seems to bet in stopped state. Start it before running the playbook"
+    msg: "Ops... podman machine seems to be in stopped state. Start it before running the playbook"
   when: '"stopped" in (podman_machine_inspect.stdout | to_json)'
