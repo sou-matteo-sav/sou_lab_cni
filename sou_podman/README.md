@@ -53,13 +53,13 @@ In order for containers to communicate, they must be placed under the same podma
 
 Their container name can then be used as fqdn from the machines inside the network.
 
-For grafana to work this setting must be set in its own conf file
+For grafana to work behind a reverse proxy, this setting must be set in its own conf file
 ```bash
 root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
 serve_from_sub_path = true
 ```
 
-For prometheus to work, this extra arg must be added in container execution
+For prometheus to work behind a reverse proxy, this extra arg must be added in container execution
 ```bash
 --web.external-url=/prometheus/
 ```
