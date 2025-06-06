@@ -50,7 +50,8 @@ If you chose to encrypt vault, a vault_password file or --ask-vault-pass argumen
 
 ## Extra Settings
 In order for containers to communicate, they must be placed under the same podman network.
-Their container name can be used as fqdn inside the network.
+
+Their container name can then be used as fqdn from the machines inside the network.
 
 For grafana to work this setting must be set in its own conf file
 ```bash
