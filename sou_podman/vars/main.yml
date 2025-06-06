@@ -10,7 +10,8 @@ ssl_certificates:
   pem:
     name: "certificate.pem"
 
-podman_network_name: "pou_podman_net"
+# PODMAN NETWORK
+podman_network_name: "sou_podman_net"
 
 # HAPROXY
 haproxy_container:
